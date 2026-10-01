@@ -1,8 +1,6 @@
 {
   "info": {
-    "_postman_id": "franchise-api-collection-v1",
-    "name": "Franchise API",
-    "description": "Colección de pruebas para la API de Gestión de Franquicias",
+    "name": "Franchises API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -14,39 +12,10 @@
   ],
   "item": [
     {
-      "name": "1. Criterio Estrella",
+      "name": "Franquicias",
       "item": [
         {
-          "name": "Producto con mayor stock por sucursal (Franquicia 1)",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/franchises/1/max-stock-products",
-              "host": ["{{baseUrl}}"],
-              "path": ["franchises", "1", "max-stock-products"]
-            }
-          }
-        },
-        {
-          "name": "Producto con mayor stock por sucursal (Franquicia 2)",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/franchises/2/max-stock-products",
-              "host": ["{{baseUrl}}"],
-              "path": ["franchises", "2", "max-stock-products"]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "2. Criterios Obligatorios",
-      "item": [
-        {
-          "name": "Crear Franquicia",
+          "name": "Crear franquicia",
           "request": {
             "method": "POST",
             "header": [
@@ -67,87 +36,7 @@
           }
         },
         {
-          "name": "Agregar Sucursal a Franquicia",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Sucursal Parque 93\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/franchises/1/branches",
-              "host": ["{{baseUrl}}"],
-              "path": ["franchises", "1", "branches"]
-            }
-          }
-        },
-        {
-          "name": "Agregar Producto a Sucursal",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"Café Bourbon Rosado\",\n  \"stock\": 180\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/branches/1/products",
-              "host": ["{{baseUrl}}"],
-              "path": ["branches", "1", "products"]
-            }
-          }
-        },
-        {
-          "name": "Modificar Stock de Producto",
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"stock\": 350\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/products/1/stock",
-              "host": ["{{baseUrl}}"],
-              "path": ["products", "1", "stock"]
-            }
-          }
-        },
-        {
-          "name": "Eliminar Producto de Sucursal",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/branches/1/products/3",
-              "host": ["{{baseUrl}}"],
-              "path": ["branches", "1", "products", "3"]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "3. Puntos Extra",
-      "item": [
-        {
-          "name": "Actualizar Nombre de Franquicia",
+          "name": "Actualizar nombre de franquicia",
           "request": {
             "method": "PATCH",
             "header": [
@@ -168,7 +57,69 @@
           }
         },
         {
-          "name": "Actualizar Nombre de Sucursal",
+          "name": "Obtener producto con mayor stock por sucursal",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchises/1/max-stock-products",
+              "host": ["{{baseUrl}}"],
+              "path": ["franchises", "1", "max-stock-products"]
+            }
+          }
+        },
+        {
+          "name": "Listar franquicias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchises",
+              "host": ["{{baseUrl}}"],
+              "path": ["franchises"]
+            }
+          }
+        },
+        {
+          "name": "Obtener franquicia por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchises/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["franchises", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sucursales",
+      "item": [
+        {
+          "name": "Agregar sucursal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sucursal Parque 93\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/franchises/1/branches",
+              "host": ["{{baseUrl}}"],
+              "path": ["franchises", "1", "branches"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar nombre de sucursal",
           "request": {
             "method": "PATCH",
             "header": [
@@ -189,7 +140,66 @@
           }
         },
         {
-          "name": "Actualizar Nombre de Producto",
+          "name": "Listar sucursales por franquicia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/franchises/1/branches",
+              "host": ["{{baseUrl}}"],
+              "path": ["franchises", "1", "branches"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Agregar producto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Café Bourbon Rosado\",\n  \"stock\": 180\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/branches/1/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["branches", "1", "products"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar stock de producto",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stock\": 350\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products/1/stock",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "1", "stock"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar nombre de producto",
           "request": {
             "method": "PATCH",
             "header": [
@@ -208,50 +218,21 @@
               "path": ["products", "1", "name"]
             }
           }
-        }
-      ]
-    },
-    {
-      "name": "4. Consultas de Soporte",
-      "item": [
+        },
         {
-          "name": "Listar Franquicias",
+          "name": "Eliminar producto",
           "request": {
-            "method": "GET",
+            "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/franchises",
+              "raw": "{{baseUrl}}/branches/1/products/3",
               "host": ["{{baseUrl}}"],
-              "path": ["franchises"]
+              "path": ["branches", "1", "products", "3"]
             }
           }
         },
         {
-          "name": "Obtener Franquicia por ID",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/franchises/1",
-              "host": ["{{baseUrl}}"],
-              "path": ["franchises", "1"]
-            }
-          }
-        },
-        {
-          "name": "Listar Sucursales de Franquicia",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/franchises/1/branches",
-              "host": ["{{baseUrl}}"],
-              "path": ["franchises", "1", "branches"]
-            }
-          }
-        },
-        {
-          "name": "Listar Productos de Sucursal",
+          "name": "Listar productos por sucursal",
           "request": {
             "method": "GET",
             "header": [],
