@@ -101,7 +101,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
         if (!franchiseRepository.existsById(franchiseId)) {
             throw new NoSuchElementException("Franchise not found with ID: " + franchiseId);
         }
-        return branchRepository.findByFranquiciaId(franchiseId);
+        return branchRepository.findByFranchiseId(franchiseId);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
                 .collect(Collectors.toMap(Branch::getId, s -> s));
 
         List<Long> sucursalIds = branches.stream().map(Branch::getId).toList();
-        List<Product> productos = productRepository.findBySucursalIdIn(sucursalIds);
+        List<Product> productos = productRepository.findByBranchIdIn(sucursalIds);
 
         Map<Long, Product> maxProductoPorSucursal = productos.stream()
                 .collect(Collectors.toMap(

@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BranchRepositoryPort {
-    Branch save(Branch sucursal);
+    Branch save(Branch branch);
 
     Optional<Branch> findById(Long id);
 
-    List<Branch> findByFranquiciaId(Long franquiciaId);
+    List<Branch> findByFranchiseId(Long franchiseId);
 
     boolean existsById(Long id);
 }

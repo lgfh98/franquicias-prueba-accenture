@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepositoryPort {
-    Product save(Product producto);
+    Product save(Product product);
 
     Optional<Product> findById(Long id);
 
-    List<Product> findBySucursalId(Long sucursalId);
+    List<Product> findByBranchId(Long branchId);
 
-    List<Product> findBySucursalIdIn(List<Long> sucursalIds);
+    List<Product> findByBranchIdIn(List<Long> branchIds);
 
     void deleteById(Long id);
 
