@@ -1,6 +1,8 @@
 FROM amazoncorretto:25 AS builder
 WORKDIR /app
 
+RUN dnf install -y findutils && dnf clean all
+
 COPY gradlew .
 COPY gradle/ gradle/
 COPY build.gradle settings.gradle ./
