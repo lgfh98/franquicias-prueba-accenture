@@ -35,7 +35,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
     }
 
     @Override
-    public Branch addBranch(Long franchiseId, String name) {
+    public Branch addBranchToFranchise(Long franchiseId, String name) {
         if (!franchiseRepository.existsById(franchiseId)) {
             throw new NoSuchElementException("Franchise not found with ID: " + franchiseId);
         }
@@ -51,7 +51,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
     }
 
     @Override
-    public Product addProduct(Long branchId, String name, Integer stock) {
+    public Product addProductToBranch(Long branchId, String name, Integer stock) {
         if (!branchRepository.existsById(branchId)) {
             throw new NoSuchElementException("Branch not found with ID: " + branchId);
         }
@@ -59,7 +59,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
     }
 
     @Override
-    public void deleteProduct(Long branchId, Long productId) {
+    public void deleteProductFromBranch(Long branchId, Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new NoSuchElementException("Product not found with ID: " + productId));
 
@@ -105,7 +105,7 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
     }
 
     @Override
-    public List<HighestStockProductDto> getHighestStockProductsByBranch(Long franchiseId) {
+    public List<HighestStockProductDto> getMaxStockProductsPerBranch(Long franchiseId) {
         List<Branch> branches = getBranchesByFranchiseId(franchiseId);
         if (branches.isEmpty()) {
             return List.of();

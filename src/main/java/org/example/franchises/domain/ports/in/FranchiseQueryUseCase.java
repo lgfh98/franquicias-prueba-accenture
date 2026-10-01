@@ -13,5 +13,5 @@ public interface FranchiseQueryUseCase {
 
     List<Branch> getBranchesByFranchiseId(Long franchiseId);
 
-    List<HighestStockProductDto> getHighestStockProductsByBranch(Long franchiseId);
+    List<HighestStockProductDto> getMaxStockProductsPerBranch(Long franchiseId);
 }

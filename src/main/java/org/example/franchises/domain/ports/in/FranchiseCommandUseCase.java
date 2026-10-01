@@ -9,13 +9,13 @@ public interface FranchiseCommandUseCase {
 
     Franchise updateFranchiseName(Long franchiseId, String newName);
 
-    Branch addBranch(Long franchiseId, String name);
+    Branch addBranchToFranchise(Long franchiseId, String name);
 
     Branch updateBranchName(Long branchId, String newName);
 
-    Product addProduct(Long branchId, String name, Integer stock);
+    Product addProductToBranch(Long branchId, String name, Integer stock);
 
-    void deleteProduct(Long branchId, Long productId);
+    void deleteProductFromBranch(Long branchId, Long productId);
 
     Product updateProductStock(Long productId, Integer newStock);
 
