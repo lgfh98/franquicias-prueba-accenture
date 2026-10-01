@@ -3,6 +3,7 @@ package org.example.franchises.infrastructure.decorator;
 import lombok.RequiredArgsConstructor;
 import org.example.franchises.domain.model.Branch;
 import org.example.franchises.domain.model.Franchise;
+import org.example.franchises.domain.model.Product;
 import org.example.franchises.domain.model.dto.HighestStockProductDto;
 import org.example.franchises.domain.ports.in.FranchiseQueryUseCase;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +34,10 @@ public class ReadOnlyFranchiseQueryDecorator implements FranchiseQueryUseCase {
     @Override
     public List<Branch> getBranchesByFranchiseId(Long franchiseId) {
         return delegate.getBranchesByFranchiseId(franchiseId);
+    }
+
+    @Override
+    public List<Product> getProductsByBranch(Long branchId) {
+        return delegate.getProductsByBranch(branchId);
     }
 }

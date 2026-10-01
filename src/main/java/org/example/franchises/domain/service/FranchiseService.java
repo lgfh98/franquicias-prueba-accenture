@@ -105,6 +105,14 @@ public class FranchiseService implements FranchiseCommandUseCase, FranchiseQuery
     }
 
     @Override
+    public List<Product> getProductsByBranch(Long branchId) {
+        if (!branchRepository.existsById(branchId)) {
+            throw new NoSuchElementException("Branch not found with ID: " + branchId);
+        }
+        return productRepository.findByBranchId(branchId);
+    }
+
+    @Override
     public List<HighestStockProductDto> getMaxStockProductsPerBranch(Long franchiseId) {
         List<Branch> branches = getBranchesByFranchiseId(franchiseId);
         if (branches.isEmpty()) {
