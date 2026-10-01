@@ -8,22 +8,22 @@ public class Branch {
     private Long id;
 
     @Getter
-    private Long FranchisesId;
+    private Long FranchiseId;
 
     @Getter
     private String name;
 
-    public Branch(Long id, Long franchisesId, String name) {
-        if (franchisesId == null) {
+    public Branch(Long id, Long franchiseId, String name) {
+        if (franchiseId == null) {
             throw new IllegalArgumentException("FranchisesId cannot be null");
         }
         this.id = id;
-        this.FranchisesId = franchisesId;
+        this.FranchiseId = franchiseId;
         this.name = name.trim();
     }
 
-    public Branch(Long franchisesId, String name) {
-        this(null, franchisesId, name);
+    public Branch(Long franchiseId, String name) {
+        this(null, franchiseId, name);
     }
 
     public void updateName(String newName) {
