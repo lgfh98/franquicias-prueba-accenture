@@ -1,0 +1,79 @@
+@baseUrl = http://localhost:8080/api/v1
+
+###
+GET {{baseUrl}}/franchises/1/max-stock-products
+
+###
+GET {{baseUrl}}/franchises/2/max-stock-products
+
+###
+POST {{baseUrl}}/franchises
+Content-Type: application/json
+
+{
+  "name": "Franquicia Starbucks"
+}
+
+###
+POST {{baseUrl}}/franchises/1/branches
+Content-Type: application/json
+
+{
+  "name": "Sucursal Parque 93"
+}
+
+###
+POST {{baseUrl}}/branches/1/products
+Content-Type: application/json
+
+{
+  "name": "Café Bourbon Rosado",
+  "stock": 180
+}
+
+###
+PATCH {{baseUrl}}/products/1/stock
+Content-Type: application/json
+
+{
+  "stock": 350
+}
+
+###
+DELETE {{baseUrl}}/branches/1/products/3
+
+###
+PATCH {{baseUrl}}/franchises/1/name
+Content-Type: application/json
+
+{
+  "name": "Juan Valdez Café Premium"
+}
+
+###
+PATCH {{baseUrl}}/branches/1/name
+Content-Type: application/json
+
+{
+  "name": "Sucursal Zona Rosa Flagship"
+}
+
+###
+PATCH {{baseUrl}}/products/1/name
+Content-Type: application/json
+
+{
+  "name": "Café Latte Deslactosado"
+}
+
+###
+GET {{baseUrl}}/franchises
+
+###
+GET {{baseUrl}}/franchises/1
+
+###
+GET {{baseUrl}}/franchises/1/branches
+
+###
+GET {{baseUrl}}/branches/1/products

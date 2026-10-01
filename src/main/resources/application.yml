@@ -15,6 +15,11 @@ spring:
       enabled: true
 
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  sql:
+    init:
+      mode: embedded
