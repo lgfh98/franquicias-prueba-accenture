@@ -18,6 +18,7 @@ Para esta solución implementé una **Arquitectura Hexagonal (Puertos y Adaptado
 - **Transacciones desacopladas con Patrón Decorator**: Para mantener el servicio de dominio puro (sin `@Transactional`), la transaccionalidad se maneja en la capa de infraestructura mediante decoradores (`TransactionalFranchiseCommandDecorator` para escritura y `ReadOnlyFranchiseQueryDecorator` con `readOnly = true` para optimizar lecturas).
 - **Mapeo explícito**: Las entidades de persistencia JPA (`*JpaEntity`) se mantienen separadas de los modelos de dominio mediante mappers dedicados.
 - **Manejo global de excepciones**: Se implementó `GlobalExceptionHandler` con `ProblemDetail` (RFC 7807) para estandarizar las respuestas de error ante recursos no encontrados (404) o validaciones de negocio (400).
+- **Concurrencia con Virtual Threads (Project Loom)**: Aprovechando las capacidades de Java 25 y Spring Boot, se habilitó el uso de hilos virtuales (`spring.threads.virtual.enabled=true`). Esto permite atender un alto volumen de peticiones concurrentes con I/O bloqueante (JDBC/PostgreSQL) bajo el modelo clásico imperativo *thread-per-request*, evitando la sobrecarga y complejidad accidental de frameworks reactivos (WebFlux) en conjunto con JPA.
 
 ---
 
