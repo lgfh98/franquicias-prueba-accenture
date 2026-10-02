@@ -52,6 +52,14 @@ La aplicación iniciará en `http://localhost:8080` utilizando H2 en memoria con
   - Usuario: `sa`
   - Contraseña: *(vacía)*
 
+### 3. Pruebas unitarias y reporte de cobertura
+Para ejecutar la suite de pruebas unitarias y generar las métricas de cobertura con JaCoCo:
+
+```bash
+./gradlew test jacocoTestReport
+```
+El reporte HTML generado queda en `build/reports/jacoco/test/html/index.html` (con más del 80% de cobertura total y 99% en el núcleo de dominio).
+
 ---
 
 ## Cómo probar la API
